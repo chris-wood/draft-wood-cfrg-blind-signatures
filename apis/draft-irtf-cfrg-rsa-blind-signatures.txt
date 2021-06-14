@@ -76,7 +76,7 @@ Table of Contents
    8.  Security Considerations
      8.1.  Timing Side Channels
      8.2.  Message Robustness
-     8.3.  Salt State
+     8.3.  Randomized and Deterministic Signatures
      8.4.  Key Substitution Attacks
      8.5.  Alternative RSA Encoding Functions
      8.6.  Alternative Blind Signature Schemes
@@ -331,7 +331,8 @@ Table of Contents
    parameters directly, e.g., to set the PSS salt length to 0 as a way
    of producing deterministic signatures.  Instead, implementations
    should offer separate abstractions for randommized or deterministic
-   signature generation.
+   signature generation.  See Section 8.3 for more information about
+   deterministic signature considerations.
 
 8.  Security Considerations
 
@@ -369,15 +370,26 @@ Table of Contents
    for this purpose.  Defining such a proof is out of scope for this
    document.
 
-8.3.  Salt State
+8.3.  Randomized and Deterministic Signatures
 
-   The PSS salt is a randomly generated string chosen when a message is
-   encoded.  If the salt is not generated randomly, or is otherwise
-   constructed maliciously, it might be possible for the salt to carry
-   client information to the server.  For example, the salt might be
-   maliciously constructed to encode the local IP address of the client.
-   Implementations MUST ensure that the salt is generated correctly to
-   mitigate such issues.
+   When sLen > 0, the PSS salt is a randomly generated string chosen
+   when a message is encoded.  This means the resulting signature is
+   non-deterministic, meaning that two signatures over the same message
+   will be different.  If the salt is not generated randomly, or is
+   otherwise constructed maliciously, it might be possible for the salt
+   to carry client information to the server.  For example, the salt
+   might be maliciously constructed to encode the local IP address of
+   the client.  As a result, APIs SHOULD NOT allow clients to provide
+   the salt directly; see Section 7 for API considerations.
+
+   When sLen = 0, the PSS salt is empty and the resulting signature is
+   deterministic.  Such signatures may be useful for applications
+   wherein the only desired source of entropy is the input message.
+
+   Applications that use deterministic signatures SHOULD carefully
+   analyze the security implications.  When the required signature
+   scheme is not clear, applications SHOULD default to randomized
+   signatures.
 
 8.4.  Key Substitution Attacks
 
