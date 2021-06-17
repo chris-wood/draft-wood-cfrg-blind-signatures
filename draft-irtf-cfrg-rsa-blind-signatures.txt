@@ -5,10 +5,10 @@
 Network Working Group                                           F. Denis
 Internet-Draft                                               Fastly Inc.
 Intended status: Informational                                 F. Jacobs
-Expires: 18 December 2021                                     Apple Inc.
+Expires: 19 December 2021                                     Apple Inc.
                                                                C.A. Wood
                                                               Cloudflare
-                                                            16 June 2021
+                                                            17 June 2021
 
 
                           RSA Blind Signatures
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 December 2021.
+   This Internet-Draft will expire on 19 December 2021.
 
 Copyright Notice
 
@@ -336,14 +336,26 @@ Table of Contents
 
 8.  Security Considerations
 
-   Bellare et al.  [BNPS03] proved security of Chaum's original blind
-   signature scheme based on RSA-FDH based on "one-more-RSA-inversion."
-   Note that the design in this document differs only in message
-   encoding, i.e., using PSS instead of FDH.  Note, importantly, that an
-   empty salt effectively reduces PSS to FDH.
+   Bellare et al.  [BNPS03] proved the following properties of Chaum's
+   original blind signature scheme based on RSA-FDH:
 
-   [[OPEN ISSUE: confirm that results from BNPS03 apply to this
-   construction]]
+   *  One-more-forgery polynomial security.  This means the adversary,
+      interacting with the server (signer) as a client, cannot output
+      n+1 valid message and signature tuples after only interacting with
+      the server n times, for some n which is polynomial in the scheme's
+      security parameter.
+
+   *  Concurrent polynomial security.  This means that servers can
+      engage in polynomially many invocations of the protocol without
+      compromising security.
+
+   Both results rely upon the RSA Known Target Inversion Problem being
+   hard.
+
+   The design in this document differs from the analysis in [BNPS03]
+   only in message encoding, i.e., using PSS instead of FDH.  Note,
+   importantly, that an empty salt effectively reduces PSS to FDH, so
+   the same results apply.
 
 8.1.  Timing Side Channels
 

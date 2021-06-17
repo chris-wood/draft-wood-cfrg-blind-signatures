@@ -1014,7 +1014,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Denis, et al.</td>
-<td class="center">Expires 18 December 2021</td>
+<td class="center">Expires 19 December 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1027,12 +1027,12 @@ address div.right {
 <dd class="internet-draft">draft-irtf-cfrg-rsa-blind-signatures-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-06-16" class="published">16 June 2021</time>
+<time datetime="2021-06-17" class="published">17 June 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-12-18">18 December 2021</time></dd>
+<dd class="expires"><time datetime="2021-12-19">19 December 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1084,7 +1084,7 @@ in <span>[<a href="#RFC8017" class="xref">RFC8017</a>]</span> to enable blind si
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 December 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 December 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1493,11 +1493,22 @@ generation. See <a href="#det-sigs" class="xref">Section 8.3</a> for more inform
       <h2 id="name-security-considerations">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-8-1">Bellare et al. <span>[<a href="#BNPS03" class="xref">BNPS03</a>]</span> proved security of Chaum's original
-blind signature scheme based on RSA-FDH based on "one-more-RSA-inversion." Note that the
-design in this document differs only in message encoding, i.e., using PSS instead of FDH.
-Note, importantly, that an empty salt effectively reduces PSS to FDH.<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">[[OPEN ISSUE: confirm that results from BNPS03 apply to this construction]]<a href="#section-8-2" class="pilcrow">¶</a></p>
+<p id="section-8-1">Bellare et al. <span>[<a href="#BNPS03" class="xref">BNPS03</a>]</span> proved the following properties of
+Chaum's original blind signature scheme based on RSA-FDH:<a href="#section-8-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8-2.1">One-more-forgery polynomial security. This means the adversary, interacting with the server
+(signer) as a client, cannot output n+1 valid message and signature tuples after only
+interacting with the server n times, for some n which is polynomial in the scheme's security
+parameter.<a href="#section-8-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-8-2.2">Concurrent polynomial security. This means that servers can engage in polynomially many
+invocations of the protocol without compromising security.<a href="#section-8-2.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-8-3">Both results rely upon the RSA Known Target Inversion Problem being hard.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-4">The design in this document differs from the analysis in <span>[<a href="#BNPS03" class="xref">BNPS03</a>]</span> only in message encoding,
+i.e., using PSS instead of FDH. Note, importantly, that an empty salt effectively reduces PSS
+to FDH, so the same results apply.<a href="#section-8-4" class="pilcrow">¶</a></p>
 <div id="timing-side-channels">
 <section id="section-8.1">
         <h3 id="name-timing-side-channels">
