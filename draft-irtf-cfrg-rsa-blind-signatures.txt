@@ -635,21 +635,22 @@ Appendix A.  Test Vectors
    *  p, q, n, e, d: RSA private and public key parameters, each encoded
       as a hexadecimal string.
 
-   *  msg: Messsage being signed, encoded as a hexadecimal string.  Its
-      hash is computed using the hash function identified by the 'hash'
-      test vector parameter.
+   *  msg: Messsage being signed, encoded as a hexadecimal string.  The
+      hash is computed using SHA-384.
 
    *  salt: Randomly-generated salt used when computing the signature.
+      The length (sLen) is either 48 or 0 bytes.
 
    *  inv: The message blinding inverse, encoded as a hexadecimal
       string.
 
-   *  encoded_msg: EMSA-PSS encoded message.
+   *  encoded_msg: EMSA-PSS encoded message.  The mask generation
+      function is MGF1 with SHA-384.
 
    *  blinded_msg, blind_sig: The protocol values exchanged during the
       computation, encoded as hexadecimal strings.
 
-   *  sig: The message signature.
+   *  sig: The output message signature.
 
    Test vector for probabilistic signatures (sLen=48):
 
