@@ -5,10 +5,10 @@
 Network Working Group                                           F. Denis
 Internet-Draft                                               Fastly Inc.
 Intended status: Informational                                 F. Jacobs
-Expires: 1 January 2022                                       Apple Inc.
+Expires: 5 January 2022                                       Apple Inc.
                                                                C.A. Wood
                                                               Cloudflare
-                                                            30 June 2021
+                                                             4 July 2021
 
 
                           RSA Blind Signatures
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 January 2022.
+   This Internet-Draft will expire on 5 January 2022.
 
 Copyright Notice
 
@@ -554,14 +554,14 @@ Table of Contents
               Davidson, A., "Privacy Pass: The Protocol", Work in
               Progress, Internet-Draft, draft-davidson-pp-protocol-01,
               13 July 2020, <https://datatracker.ietf.org/doc/html/
-              draft-davidson-pp-protocol-01.txt>.
+              draft-davidson-pp-protocol-01>.
 
    [I-D.irtf-cfrg-bls-signature]
               Boneh, D., Gorbunov, S., Wahby, R. S., Wee, H., and Z.
               Zhang, "BLS Signatures", Work in Progress, Internet-Draft,
               draft-irtf-cfrg-bls-signature-04, 10 September 2020,
               <https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-
-              bls-signature-04.txt>.
+              bls-signature-04>.
 
    [I-D.irtf-cfrg-voprf]
               Davidson, A., Faz-Hernandez, A., Sullivan, N., and C. A.
@@ -569,7 +569,7 @@ Table of Contents
               Prime-Order Groups", Work in Progress, Internet-Draft,
               draft-irtf-cfrg-voprf-06, 21 February 2021,
               <https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-
-              voprf-06.txt>.
+              voprf-06>.
 
    [JKK14]    "Round-Optimal Password-Protected Secret Sharing and
               T-PAKE in the Password-Only model",
