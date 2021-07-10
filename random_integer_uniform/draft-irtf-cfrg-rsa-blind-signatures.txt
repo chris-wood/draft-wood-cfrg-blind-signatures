@@ -238,8 +238,8 @@ Table of Contents
    L = ceil((ceil(log2(n - m)) + k) / 8)
 
    These uniform bytes are then interpreted as an integer via OS2IP,
-   whose result is reduced mod (n - m) and added to n.  Choosing k >=
-   128 is recommended and gives bias at most 2^-k.
+   which is then reduced mod (n - m) and added to n.  Choosing k >= 128
+   is recommended and gives bias at most 2^-k.
 
 5.1.2.  BlindSign
 
