@@ -5,10 +5,10 @@
 Network Working Group                                           F. Denis
 Internet-Draft                                               Fastly Inc.
 Intended status: Informational                                 F. Jacobs
-Expires: 11 January 2022                                      Apple Inc.
+Expires: 13 January 2022                                      Apple Inc.
                                                                C.A. Wood
                                                               Cloudflare
-                                                            10 July 2021
+                                                            12 July 2021
 
 
                           RSA Blind Signatures
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2022.
+   This Internet-Draft will expire on 13 January 2022.
 
 Copyright Notice
 
@@ -230,16 +230,7 @@ Table of Contents
    11. output blinded_msg, inv
 
    The blinding factor r must be randomly chosen from a uniform
-   distribution.
-
-   In order to do so, the random_integer_uniform function can be
-   implemented by obtaining L uniform bytes, where
-
-   L = ceil((ceil(log2(n - m)) + k) / 8)
-
-   These uniform bytes are then interpreted as an integer via OS2IP,
-   which is then reduced mod (n - m) and added to n.  Choosing k >= 128
-   is recommended and gives bias at most 2^-k.
+   distribution.  This is typically done via rejection sampling.
 
 5.1.2.  BlindSign
 
